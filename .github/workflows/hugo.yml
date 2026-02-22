@@ -40,7 +40,7 @@ jobs:
       - name: Install Dart Sass postcss
         run: sudo snap install dart-sass
       - name: Install Node.js
-        run: sudo snap install nodejs node-postcss
+        run: sudo snap install npm
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -48,7 +48,8 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      #- name: Install Node.js dependencies
+      - name: Install Node.js dependencies
+        run: npm install postcss
       #  run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci && npm install || true"
       - name: Build with Hugo
         env:
