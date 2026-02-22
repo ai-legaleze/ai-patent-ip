@@ -39,6 +39,8 @@ jobs:
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Install Dart Sass postcss
         run: sudo snap install dart-sass
+      - name: Install Node.js
+        run: sudo snap install nodejs node-postcss
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -46,8 +48,8 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci && npm install || true"
+      #- name: Install Node.js dependencies
+      #  run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci && npm install || true"
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
